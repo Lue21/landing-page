@@ -1,7 +1,8 @@
 const time = document.getElementById('time'),
       greeting = document.getElementById('greeting'),
       name = document.getElementById('name'),
-      focus = document.getElementById('focus')
+      focus = document.getElementById('focus'),
+      date = document.getElementById('date');
 
 
 
@@ -9,14 +10,16 @@ function showTime() {
     let today = new Date(),
         hour = today.getHours(),
         min = today.getMinutes(),
-        sec = today.getSeconds();
+        sec = today.getSeconds(),
+        day = today.getDate(),
+        month = today.getMonth(),
+        year = today.getFullYear();
+        
 
-    const amPm = hour >= 12 ? 'PM' : 'AM';
+    hour = 24-2;
 
-
-    hour = hour % 12 || 12;
-
-    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+    time.innerHTML = `${hour}<span>:<span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+    date.innerHTML = `${day}<span>.<span>${month + 1}<span>.<span>${year}`;
     
     setTimeout(showTime, 1000);
 }
@@ -28,16 +31,16 @@ function addZero(n) {
 
 function setBgGreet() {
     let today = new Date(),
-         hour = today.getHours();
+        hour = today.getHours();
 
     if (hour < 12) {
-        document.body.style.backgroundImage = 'url()';
+        document.body.style.backgroundImage = 'url(assets/morning.jpg)';
         greeting.textContent = 'Good Morning';
     } else if (hour < 18) {
-        document.body.style.backgroundColor = 'gold';
+        document.body.style.backgroundColor = 'url(assets/day.jpg)';
         greeting.textContent = 'Good Day';
     } else {
-        document.body.style.backgroundImage = 'url()';
+        document.body.style.backgroundImage = 'url(assets/evening2.jpg)';
         greeting.textContent = 'Good Evening';
         document.body.style.color = 'white';
     }
@@ -92,4 +95,3 @@ showTime();
 setBgGreet();
 getName();
 getFocus();
-
