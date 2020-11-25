@@ -16,9 +16,8 @@ function showTime() {
         year = today.getFullYear();
         
 
-    hour = 24-2;
 
-    time.innerHTML = `${hour}<span>:<span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+    time.innerHTML = `${addZero(hour)}<span>:<span>${addZero(min)}<span>:</span>${addZero(sec)}`;
     date.innerHTML = `${day}<span>.<span>${month + 1}<span>.<span>${year}`;
     
     setTimeout(showTime, 1000);
@@ -36,9 +35,12 @@ function setBgGreet() {
     if (hour < 12) {
         document.body.style.backgroundImage = 'url(assets/morning.jpg)';
         greeting.textContent = 'Good Morning';
+
     } else if (hour < 18) {
-        document.body.style.backgroundColor = 'url(assets/day.jpg)';
+        document.body.style.backgroundImage = 'url(assets/day2.jpg)';
         greeting.textContent = 'Good Day';
+
+        
     } else {
         document.body.style.backgroundImage = 'url(assets/evening2.jpg)';
         greeting.textContent = 'Good Evening';
